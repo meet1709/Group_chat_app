@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "717210125381",
+    "project_id": "chatpicapp",
+    "storage_bucket": "chatpicapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:717210125381:android:ed9c7b3fd7d837e7b2cf2c",
+        "android_client_info": {
+          "package_name": "com.example.group_chat_app_pic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "717210125381-de2ogsjh5ft9fdllgv99p89npf8re7lk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDszK2TGG72Ew9qfnPetacDFqMy2L_fN5k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "717210125381-de2ogsjh5ft9fdllgv99p89npf8re7lk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
