@@ -6,5 +6,5 @@ class Constants
   static String apiKey = "AIzaSyDPck2K8vyqYTGjWGOhkh54Sa703Jqbp7w";
   static String messagingSenderId = "717210125381";
   static String projectId = "chatpicapp";
-  final pColor =  Colors.blue ;
+  final pColor =  Color.fromRGBO(10, 26, 53, 1.0) ;
 }

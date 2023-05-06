@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class MessageTile extends StatefulWidget {
   final String message;
@@ -32,16 +33,35 @@ class _MessageTileState extends State<MessageTile> {
       
       ),
 
+    
       alignment: widget.sentByme ? Alignment.centerRight : Alignment.centerLeft,
-      child: Container(
-        padding: const EdgeInsets.only(top: 17, bottom: 17, left: 20, right: 20),
+      child: Column(
+
+        crossAxisAlignment: widget.sentByme ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+
+
+        children: [
+
+          Text(
+              widget.sender.toUpperCase(),
+              textAlign: TextAlign.start,
+              style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold, color: Colors.white , letterSpacing: -0.5),
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+
+                   
+      Container(
+        padding: const EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
         margin: widget.sentByme
             ? const EdgeInsets.only(left: 30)
             : const EdgeInsets.only(right: 30),
         decoration: BoxDecoration(
+          
             color: widget.sentByme
-                ? Theme.of(context).primaryColor
-                : Colors.grey.shade700,
+                ? Color.fromRGBO(36, 87, 202, 1.0)
+                : Colors.blueGrey[50],
             borderRadius: widget.sentByme
                 ? const BorderRadius.only(
                     topLeft: Radius.circular(20),
@@ -53,28 +73,26 @@ class _MessageTileState extends State<MessageTile> {
                     topRight: Radius.circular(20),
                     bottomRight: Radius.circular(20),
                   )),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              widget.sender.toUpperCase(),
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold, color: Colors.white , letterSpacing: -0.5),
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            Text(
+        child: Text(
               widget.message,
               textAlign: TextAlign.center,
-              style:const  TextStyle(
+              style: TextStyle(
                 fontSize: 16,
-                color: Colors.white
+                color: widget.sentByme ? Colors.white : Colors.black
               ),
             )
-          ],
-        ),
       ),
+
+
+
+        ],
+
+
+      )
+
+      
+      
+     
     ):
 
 
@@ -86,15 +104,33 @@ class _MessageTileState extends State<MessageTile> {
       ),
 
       alignment: widget.sentByme ? Alignment.centerRight : Alignment.centerLeft,
-      child: Container(
-        padding: const EdgeInsets.only(top: 17, bottom: 17, left: 20, right: 20),
+      child: Column(
+
+        crossAxisAlignment: widget.sentByme ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+
+        children: [
+
+           Text(
+              widget.sender.toUpperCase(),
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold, color: Colors.white , letterSpacing: -0.5),
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+
+
+
+           
+      Container(
+        padding: const EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
         margin: widget.sentByme
             ? const EdgeInsets.only(left: 30)
             : const EdgeInsets.only(right: 30),
         decoration: BoxDecoration(
             color: widget.sentByme
-                ? Theme.of(context).primaryColor
-                : Colors.grey.shade700,
+                ? Color.fromRGBO(36, 87, 202, 1.0)
+                : Colors.blueGrey[50],
             borderRadius: widget.sentByme
                 ? const BorderRadius.only(
                     topLeft: Radius.circular(20),
@@ -106,18 +142,7 @@ class _MessageTileState extends State<MessageTile> {
                     topRight: Radius.circular(20),
                     bottomRight: Radius.circular(20),
                   )),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              widget.sender.toUpperCase(),
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold, color: Colors.white , letterSpacing: -0.5),
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            InkWell(
+        child:InkWell(
               onTap: (){
 
                 Navigator.of(context).push(
@@ -136,14 +161,35 @@ class _MessageTileState extends State<MessageTile> {
                 height: 200,
                 width: 150,
             
-                child:widget.image == "" ? CircularProgressIndicator(color: Colors.lightBlueAccent,) : Image.network(widget.image),
+                child:widget.image == "" ? LoadingAnimationWidget.threeRotatingDots(color: Colors.white
+                , size: 50) : Image.network(widget.image),
                      
             
               ),
-            )
-              ],
-        ),
+            ),
       ),
+
+
+
+
+
+
+
+
+        ],
+
+
+
+
+
+
+
+
+      )
+      
+      
+      
+     
     );
     
     

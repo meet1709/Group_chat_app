@@ -67,11 +67,14 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+        iconTheme: IconThemeData().copyWith(color: Colors.white),
+       
         actions: [
           IconButton(
               onPressed: () {
@@ -88,15 +91,11 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       drawer: Drawer(
+        
         child: ListView(
           padding: EdgeInsets.symmetric(vertical: 50),
           children: <Widget>[
-            Icon(
-              Icons.account_circle,
-              size: 150,
-              color: Theme.of(context).primaryColor,
-              
-            ),
+            Image.asset("assets/drawer.png",),
             const SizedBox(
               height: 15,
             ),
@@ -249,7 +248,7 @@ class _HomePageState extends State<HomePage> {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: const Text("CANCEL"),
+                  child: const Text("CANCEL", style: TextStyle(color: Colors.white),),
                   style: ElevatedButton.styleFrom(
                       primary: Theme.of(context).primaryColor),
                 ),
@@ -272,7 +271,7 @@ class _HomePageState extends State<HomePage> {
                           context, Colors.green, "Grpup created Successfully");
                     }
                   },
-                  child: const Text("CREATE"),
+                  child: const Text("CREATE",style: TextStyle(color: Colors.white),),
                   style: ElevatedButton.styleFrom(
                       primary: Theme.of(context).primaryColor),
                 )

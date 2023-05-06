@@ -84,9 +84,11 @@ class _GroupInfoState extends State<GroupInfo> {
     return Scaffold(
 
      appBar: AppBar(centerTitle: true,
-     elevation: 0,
+     iconTheme: IconThemeData().copyWith(color: Colors.white),
+
+     //elevation: 0,
      backgroundColor: Theme.of(context).primaryColor,
-     title: Text("Group Info"),
+     title: Text("Group Info", style: TextStyle(color:Colors.white),),
      actions: [
 
       IconButton(onPressed: () async{

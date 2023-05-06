@@ -1,8 +1,23 @@
+
+import 'dart:io';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:group_chat_app_pic/pages/auth/loginpage.dart';
+import 'package:group_chat_app_pic/pages/chat_page.dart';
 import 'package:group_chat_app_pic/pages/homepage.dart';
 import 'package:group_chat_app_pic/service/auth_service.dart';
 import 'package:group_chat_app_pic/widget/widgets.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:uuid/uuid.dart';
+
+  DocumentReference df = FirebaseFirestore.instance.collection('users').doc(FirebaseAuth.instance.currentUser!.uid);
+  //late DocumentSnapshot ds;
+  String imageDownloaded="";
+  String image ="1";
 
 
 class ProfilePage extends StatefulWidget {
@@ -17,30 +32,168 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
 
   AuthService authService = AuthService();
+  File? imagefile;
+  
+
+
+
+
+  //  Future getProfileImages() async{
+
+  //   ImagePicker picker = ImagePicker();
+
+  //   await picker.pickImage(source: ImageSource.gallery).then((value) {
+
+
+
+
+  //     if(value != null)
+  //     {
+  //       imagefile = File(value.path);
+
+  //       uploadProfilePic();
+
+  //     }
+  //   });
+
+
+
+  // }
+
+
+  
+  // Future uploadProfilePic() async{
+
+  //   String fileName = Uuid().v1();
+
+  //   String name = widget.userName;
+
+  //   int status = 1;
+
+  //   var ref = FirebaseStorage.instance.ref().child('images').child("Profile_pics").child("$name.jpg");
+
+  //   var uploadTask = await ref.putFile(imagefile!).catchError((val){
+
+
+  //     showSnackBar(context, Colors.red, "Error in uploading profile pic");
+  //     status = 0;
+
+
+  //   });
+
+  //   if(status == 1)
+  //   {
+  //     imageDownloaded = await uploadTask.ref.getDownloadURL().whenComplete(() async{
+
+  //        await df.update({
+
+  //       'profilepic': imageDownloaded
+
+  //     }).whenComplete(() {
+
+  //       setState(() {
+          
+  //          getimage();
+  //       });
+
+
+
+
+  //     });
+
+      
+
+
+
+
+  //     }); 
+      
+     
+
+     
+
+      
+
+
+     
+
+    
+
+
+    
+
+   
+
+      
+      
+      
+      
+      
+  //     print(imageDownloaded);
+
+
+  //   }
+
+
+
+  // }
+
+  // getimage()async{
+
+  //   image = "";
+
+  //   DocumentSnapshot ds = await df.get();
+
+    
+
+  //   image = ds['profilepic'];
+
+    
+
+  // }
+
+
+
+
+
+
+
 
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
+
+    
+
+    
+
+    
+
+
+
     return Scaffold(
 
         appBar: AppBar(
+          iconTheme: IconThemeData().copyWith(color: Colors.white),
 
           centerTitle: true,
           backgroundColor: Theme.of(context).primaryColor,
-          elevation: 0,
+          //elevation: 0,
           title: const Text("Profile" , style: TextStyle(fontSize: 27 , fontWeight: FontWeight.bold , color: Colors.white),),
 
         ),
+        
 
         drawer: Drawer(
           child: ListView(
           padding: EdgeInsets.symmetric(vertical: 50),
           children: <Widget>[
-            Icon(
-              Icons.account_circle,
-              size: 150,
-              color: Colors.grey.shade700,
-            ),
+           
+        
+            Image.asset("assets/drawer.png",),
+                
+                
+                
             const SizedBox(
               height: 15,
             ),
@@ -140,8 +293,13 @@ class _ProfilePageState extends State<ProfilePage> {
         
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-        
-                Icon(Icons.account_circle, size: 180 /*edited(200)*/, color: Colors.grey.shade700,),
+
+    
+               const Icon(Icons.account_circle, size: 200 , color: Colors.grey,)
+
+                
+                
+                ,
                 const SizedBox(height: 15,),
         
                 Row(
@@ -196,3 +354,4 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 }
+

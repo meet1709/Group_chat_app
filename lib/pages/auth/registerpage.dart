@@ -22,6 +22,34 @@ class _RegisterPageState extends State<RegisterPage> {
   bool _isLoading = false;
 
   AuthService authService = AuthService();
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   
   @override
   Widget build(BuildContext context) {

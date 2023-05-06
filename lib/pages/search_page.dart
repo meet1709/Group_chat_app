@@ -69,9 +69,10 @@ class _SearchPageState extends State<SearchPage> {
 
       appBar: AppBar(
 
+          iconTheme:IconThemeData().copyWith(color: Colors.white),
           centerTitle: true,
           backgroundColor: Theme.of(context).primaryColor,
-          elevation: 0,
+          //elevation: 0,
           title: const Text("Search" , style: TextStyle(fontSize: 27 , fontWeight: FontWeight.bold , color: Colors.white),),
 
         ),

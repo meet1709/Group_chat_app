@@ -99,7 +99,7 @@ class _ChatPageState extends State<ChatPage> {
 
          "message": messagecontroller.text,
         "sender" : widget.userName,
-        "time": DateTime.now().millisecondsSinceEpoch,
+        "time": DateTime.now(),
         "type": "img",
         "imageUrl" : ""
 
@@ -161,10 +161,12 @@ class _ChatPageState extends State<ChatPage> {
 
     username = widget.userName;
     return Scaffold(
+      backgroundColor:Color.fromRGBO(10, 26, 53, 1.0) ,
       appBar: AppBar(
+        iconTheme: IconThemeData().copyWith(color: Colors.white),
         centerTitle: true,
         elevation: 0,
-        title: Text(widget.groupName),
+        title: Text(widget.groupName, style: TextStyle(color: Colors.white),),
         backgroundColor: Theme.of(context).primaryColor,
         actions: [
           IconButton(
@@ -177,59 +179,82 @@ class _ChatPageState extends State<ChatPage> {
                       adminName: admin,
                     ));
               },
-              icon: Icon(Icons.info))
+              icon: Icon(Icons.info, color: Colors.white,))
         ],
       ),
       body: SafeArea(
+        
         child: Column(
           children: [
             chatMessages(),
             Container(
-              alignment: Alignment.bottomCenter,
-              width: MediaQuery.of(context).size.width,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(20) , topRight: Radius.circular(20),
+               
+              ),
+              color: Color.fromRGBO(10, 26, 53, 1.0),
+              ),
+             
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 08),
+                alignment: Alignment.bottomCenter,
                 width: MediaQuery.of(context).size.width,
-                color: Colors.grey.shade700,
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: TextFormField(
-                        controller: messagecontroller,
-                        style: TextStyle(color: Colors.white),
-                        decoration:  InputDecoration(
-                          suffixIcon: IconButton(onPressed: (){
-                            getImages();
-                          }, icon: Icon(Icons.photo, color: Colors.blue, size: 30,)),
-                          hintText: "Send a message.....",
-                          hintStyle: TextStyle(color: Colors.white, fontSize: 16),
-                          border: InputBorder.none,
-                        ),
+                child: Container(
+                  decoration: BoxDecoration(
+               color: Color.fromRGBO(10, 26, 53, 1.0),
+              borderRadius: BorderRadius.circular(20.0),
+              boxShadow: const [
+                BoxShadow(
+                    offset: Offset(0, 3),
+                    blurRadius: 5,
+                    color: Colors.grey)
+              ],
                       ),
-                    ),
-                    const SizedBox(
-                      width: 12,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        sendMessage();
-                      },
-                      child: Container(
-                        height: 50,
-                        width: 50,
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).primaryColor,
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        child: const Center(
-                          child: Icon(
-                            Icons.send,
-                            color: Colors.white,
+                  
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 08),
+                  width: MediaQuery.of(context).size.width,
+                  //color: Color.fromRGBO(10, 26, 53, 1.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: TextFormField(
+                          
+                          controller: messagecontroller,
+                          style: TextStyle(color: Colors.white),
+                          decoration:  InputDecoration(
+                            isDense: true,
+                            suffixIcon: IconButton(onPressed: (){
+                              getImages();
+                            }, icon: Icon(Icons.camera_alt_rounded, color:Colors.white, size: 30,)),
+                            hintText: "Send a message.....",
+                            hintStyle: TextStyle(color: Colors.white, fontSize: 16),
+                            border: InputBorder.none,
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                      const SizedBox(
+                        width: 12,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          sendMessage();
+                        },
+                        child: Container(
+                          height: 50,
+                          width: 50,
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).primaryColor,
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: const Center(
+                            child: Icon(
+                              Icons.send,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -248,7 +273,7 @@ class _ChatPageState extends State<ChatPage> {
 
         "message": messagecontroller.text,
         "sender" : widget.userName,
-        "time": DateTime.now().millisecondsSinceEpoch,
+        "time": DateTime.now(),
         "type": "text",
         "imageUrl" : ""
 
@@ -309,6 +334,7 @@ class chatMessages extends StatelessWidget {
        return Expanded(
          child: ListView(
           reverse: true,
+          
        
          
        

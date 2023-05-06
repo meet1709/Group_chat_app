@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
@@ -21,7 +22,10 @@ void main() async {
     await Firebase.initializeApp();
   }
 
-  runApp(const MyApp());
+  runApp( DevicePreview(
+    enabled: true,
+    builder: (context) => const MyApp(), // Wrap your app
+  ),);
 }
 
 class MyApp extends StatefulWidget {
@@ -69,13 +73,19 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      useInheritedMediaQuery: true,
+      locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
 
       theme: ThemeData(
 
         primaryColor: Constants().pColor,
         scaffoldBackgroundColor: Colors.white,
+        useMaterial3: true
 
-      ),
+      
+
+      ).copyWith(),
 
       //debugShowCheckedModeBanner: false,
       home: _isSignedIn ? const HomePage() : const LogInPage(),
